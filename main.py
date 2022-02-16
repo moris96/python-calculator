@@ -1,8 +1,4 @@
-import math
 from tkinter import *
-
-
-
 
 
 win = Tk()
