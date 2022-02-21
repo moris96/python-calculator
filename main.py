@@ -1,4 +1,7 @@
+import math
 from tkinter import *
+from tkinter import messagebox
+from math import pi, sqrt
 
 
 win = Tk()
@@ -12,10 +15,26 @@ def btn_click(item):
     expression = expression + str(item)
     input_text.set(expression)
 
+
+# advanced math stuff
+def btn_pi(item):
+    global expression
+    expression = expression + str(math.pi)
+    input_text.set(expression)
+
+def btn_sqrt(item): #square root
+    global expression
+    expression = expression + str(math.sqrt)
+    input_text.set(expression)
+
+
+
 def bt_clear():
     global expression
     expression = ""
     input_text.set("")
+
+
 
 def bt_equal():
     try:
@@ -28,6 +47,7 @@ def bt_equal():
         input_text.set("ERROR")
 
 expression = ""
+
 
 
 input_text = StringVar()
@@ -45,6 +65,7 @@ btns_frame.pack()
 
 
 
+## calculator layout:
 # first row
 clear = Button(btns_frame, text="C", fg="black", width=48, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: bt_clear()).grid(row=0, column=0, columnspan=3, padx=1, pady=1)
 divide = Button(btns_frame, text="/", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_click("/")).grid(row=0, column=3, padx=1, pady=1)
@@ -69,8 +90,13 @@ plus = Button(btns_frame, text="+", fg="black", width=15, height=3, bd=0, bg="#e
 
 # fifth row
 zero = Button(btns_frame, text="0", fg="black", width=15, height=3, bd=0, bg="#fff", cursor="hand2", command=lambda: btn_click(0)).grid(row=4, column=0, padx=1, pady=1)
-point = Button(btns_frame, text=".", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_click(".")).grid(row=4, column=1, padx=1, pady=1)
+decimal = Button(btns_frame, text=".", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_click(".")).grid(row=4, column=1, padx=1, pady=1)
+pie = Button(btns_frame, text="π", fg="black", width=15, height=3, bd=0, bg="#fff", cursor="hand2", command=lambda: btn_pi("π")).grid(row=4, column=2, padx=1, pady=1)
 equals = Button(btns_frame, text="=", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: bt_equal()).grid(row=4, column=3, padx=1, pady=1)
+
+# sixth row
+squareRoot = Button(btns_frame, text="√", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_sqrt("√")).grid(row=5, column=0, padx=1, pady=1)
+
 
 
 # run app
