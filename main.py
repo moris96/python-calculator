@@ -1,7 +1,7 @@
 import math
 from tkinter import *
 from tkinter import messagebox
-from math import pi, sqrt
+from math import pi, sqrt, pow
 
 
 win = Tk()
@@ -24,15 +24,46 @@ def btn_pi(item):
 
 def btn_sqrt(item): #square root
     global expression
-    expression = expression + str(math.sqrt)
+    expression = math.sqrt(float(expression))
     input_text.set(expression)
 
+def btn_squared(item): #exponent (to the power of)
+    global expression
+    expression = float(input_text.get())**2
+    input_text.set(expression)
 
 
 def bt_clear():
     global expression
     expression = ""
     input_text.set("")
+
+
+class InputA:
+    pass
+
+
+class InputB:
+    pass
+
+
+def retrive_input(equation=None):
+    try:
+        global expression
+        inputValue1 = InputA.get()
+        inputValue2 = InputB.get()
+        inputValue1 = float(inputValue1)
+        inputValue2 = float(inputValue2)
+
+        expression = float(math.sqrt(inputValue1 * inputValue1 + inputValue2 * inputValue2))
+        equation.set(float(expression))
+        expression = str(expression)
+
+    except:
+        equation.set("Error")
+        expression = ""
+
+
 
 
 
@@ -96,7 +127,7 @@ equals = Button(btns_frame, text="=", fg="black", width=15, height=3, bd=0, bg="
 
 # sixth row
 squareRoot = Button(btns_frame, text="√", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_sqrt("√")).grid(row=5, column=0, padx=1, pady=1)
-
+squared = Button(btns_frame, text="x²", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_squared("x²")).grid(row=5, column=1, padx=1, pady=1)
 
 
 # run app
