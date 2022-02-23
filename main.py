@@ -1,11 +1,10 @@
-import math
 from tkinter import *
+import math
 from tkinter import messagebox
-from math import pi, sqrt, pow
 
 
 win = Tk()
-win.geometry("500x500")
+win.geometry("450x500")
 win.resizable(0,0)
 win.title("Calculator")
 
@@ -27,10 +26,61 @@ def btn_sqrt(item): #square root
     expression = math.sqrt(float(expression))
     input_text.set(expression)
 
-def btn_squared(item): #exponent (to the power of)
+def btn_squared(item): #x squared
     global expression
     expression = float(input_text.get())**2
     input_text.set(expression)
+
+def btn_cubed(item): #raise to power of n (anything)
+    global expression
+    expression = float(input_text.get()) ** 3
+    input_text.set(expression)
+
+#trigonometry
+def btn_sin(item):
+    global expression
+    expression = float(expression)
+    expression = round(math.sin(math.radians(expression)), 5)
+    input_text.set(expression)
+    expression = str(expression)
+
+def btn_cos(item):
+    global expression
+    expression = float(expression)
+    expression = round(math.cos(math.radians(expression)), 5)
+    input_text.set(expression)
+    expression = str(expression)
+
+def btn_tan(item):
+    global expression
+    expression = float(expression)
+    expression = round(math.tan(math.radians(expression)), 5)
+    input_text.set(expression)
+    expression = str(expression)
+
+#trig derivatives
+def btn_asin(item):
+    global expression
+    expression = float(expression)
+    expression = round((math.asin(expression)) * (180/math.pi), 3)
+    input_text.set(expression)
+    expression = str(expression)
+
+def btn_acos(item):
+    global expression
+    expression = float(expression)
+    expression = round((math.acos(expression)) * (180 / math.pi), 3)
+    input_text.set(expression)
+    expression = str(expression)
+
+def btn_atan(item):
+    global expression
+    expression = float(expression)
+    expression = round((math.atan(expression)) * (180 / math.pi), 3)
+    input_text.set(expression)
+    expression = str(expression)
+
+
 
 
 def bt_clear():
@@ -60,7 +110,7 @@ def retrive_input(equation=None):
         expression = str(expression)
 
     except:
-        equation.set("Error")
+        equation.set("ERROR")
         expression = ""
 
 
@@ -78,6 +128,9 @@ def bt_equal():
         input_text.set("ERROR")
 
 expression = ""
+
+
+
 
 
 
@@ -128,7 +181,18 @@ equals = Button(btns_frame, text="=", fg="black", width=15, height=3, bd=0, bg="
 # sixth row
 squareRoot = Button(btns_frame, text="√", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_sqrt("√")).grid(row=5, column=0, padx=1, pady=1)
 squared = Button(btns_frame, text="x²", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_squared("x²")).grid(row=5, column=1, padx=1, pady=1)
+x_cubed = Button(btns_frame, text="x³", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_cubed("x³")).grid(row=5, column=2, padx=1, pady=1)
+x_nth = Button(btns_frame, text="x^", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_click("**")).grid(row=5, column=3, padx=1, pady=1)
 
+# seventh row
+sin = Button(btns_frame, text="sin", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_sin("sin")).grid(row=6, column=0, padx=1, pady=1)
+cos = Button(btns_frame, text="cos", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_cos("cos")).grid(row=6, column=1, padx=1, pady=1)
+tan = Button(btns_frame, text="tan", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_tan("tan")).grid(row=6, column=2, padx=1, pady=1)
+aSin = Button(btns_frame, text="sin-1", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_asin("sin-1")).grid(row=6, column=3, padx=1, pady=1)
+
+# eigth row
+aCos = Button(btns_frame, text="cos-1", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_acos("cos-1")).grid(row=7, column=0, padx=1, pady=1)
+aTan = Button(btns_frame, text="tan-1", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_atan("tan-1")).grid(row=7, column=1, padx=1, pady=1)
 
 # run app
 win.mainloop()
