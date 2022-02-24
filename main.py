@@ -1,10 +1,10 @@
 from tkinter import *
 import math
-from tkinter import messagebox
+import numpy as np
 
 
 win = Tk()
-win.geometry("450x500")
+win.geometry("450x600")
 win.resizable(0,0)
 win.title("Calculator")
 
@@ -21,6 +21,11 @@ def btn_pi(item):
     expression = expression + str(math.pi)
     input_text.set(expression)
 
+def btn_e(item):
+    global expression
+    expression = expression + str(math.e)
+    input_text.set(expression)
+
 def btn_sqrt(item): #square root
     global expression
     expression = math.sqrt(float(expression))
@@ -31,10 +36,12 @@ def btn_squared(item): #x squared
     expression = float(input_text.get())**2
     input_text.set(expression)
 
-def btn_cubed(item): #raise to power of n (anything)
+def btn_cubed(item): #x cubed
     global expression
-    expression = float(input_text.get()) ** 3
+    expression = float(input_text.get())**3
     input_text.set(expression)
+
+
 
 #trigonometry
 def btn_sin(item):
@@ -79,6 +86,31 @@ def btn_atan(item):
     expression = round((math.atan(expression)) * (180 / math.pi), 3)
     input_text.set(expression)
     expression = str(expression)
+
+#log & ln
+def btn_log(item):
+    global expression
+    expression = float(expression)
+    expression = round(math.log10((expression)), 5)
+    input_text.set(expression)
+    expression = str(expression)
+
+def btn_ln(item):
+    global expression
+    expression = float(expression)
+    expression = round(math.log((expression)), 5)
+    input_text.set(expression)
+    expression = str(expression)
+
+#inverse
+
+def btn_inv(item):
+    global expression
+    expression = float(expression)
+    expression = int(np.negative(expression))
+    input_text.set(expression)
+    expression = str(expression)
+
 
 
 
@@ -193,6 +225,12 @@ aSin = Button(btns_frame, text="sin-1", fg="black", width=15, height=3, bd=0, bg
 # eigth row
 aCos = Button(btns_frame, text="cos-1", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_acos("cos-1")).grid(row=7, column=0, padx=1, pady=1)
 aTan = Button(btns_frame, text="tan-1", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_atan("tan-1")).grid(row=7, column=1, padx=1, pady=1)
+log = Button(btns_frame, text="log", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_log("log")).grid(row=7, column=2, padx=1, pady=1)
+ln = Button(btns_frame, text="ln", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_ln("ln")).grid(row=7, column=3, padx=1, pady=1)
+
+# ninth row
+e = Button(btns_frame, text="e", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_e("e")).grid(row=8, column=0, padx=1, pady=1)
+inverse = Button(btns_frame, text="(-)", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_inv("(-)")).grid(row=8, column=1, padx=1, pady=1)
 
 # run app
 win.mainloop()

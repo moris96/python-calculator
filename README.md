@@ -5,3 +5,5 @@
   * square root 
   * x², x³, x^n (same process as square root, as with all the other advanced math stuff being added for now)
   * trig: sin, cos, tan, sin-1, cos-1, tan-1 
+  * log, ln
+  * (-): makes a number negative 
