@@ -5,7 +5,7 @@
 #### for special buttons to work like square root or x squared, first select a number and then something like x squared or sin)
 
 # Image of calculator (will make it look better in the future, but all the buttons work):
-![](assets/calculator.jpg)
+<img src="assets/calculator.jpg">
 
 ### First row: 
 ![](assets/firstrow.jpg)
