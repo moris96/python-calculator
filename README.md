@@ -1,6 +1,6 @@
 # Introducing: Python Calculator made with the tkinter module
 ## to install tkinter, open terminal (mac/linux) or command prompt on windows and type: pip install tkinter
-### other pip installs for this app to work for you: pip install numpy , pip install math
+### other pip installs for this app to work for you (if you don't already have them installed): pip install numpy , pip install math
 
 #### for special buttons to work like square root or x squared, first select a number and then something like x squared or sin)
 
