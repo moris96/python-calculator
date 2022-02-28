@@ -115,10 +115,17 @@ def btn_inv(item): #make number negative
     expression = str(expression)
 
 
-def bt_clear():
+def bt_clear(): #clear input
     global expression
     expression = ""
     input_text.set("")
+
+def bt_delete(): #delete a number(s)
+    global expression
+    result = expression[:-1]
+    expression = result
+    input_text.set(result)
+
 
 
 class InputA:
@@ -165,7 +172,7 @@ input_text = StringVar()
 input_frame = Frame(win, width=575, height=550, bd=0, highlightbackground="black", highlightcolor="black", highlightthickness=2)
 input_frame.pack(side=TOP)
 
-input_field = Entry(input_frame, font=('arial', 15, 'bold'), textvariable=input_text, width=50, bg="#eee", bd=0, justify=RIGHT)
+input_field = Entry(input_frame, font=('arial', 13, 'bold'), textvariable=input_text, width=50, bg="#eee", bd=0, justify=RIGHT)
 input_field.grid(row=0, column=0)
 input_field.pack(ipady=10)
 
@@ -177,7 +184,8 @@ btns_frame.pack()
 # first row
 Rightparenthesis = Button(btns_frame, text="(", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_click('(')).grid(row=1, column=0, padx=1, pady=1)
 Leftparenthesis = Button(btns_frame, text=")", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_click(')')).grid(row=1, column=1, padx=1, pady=1)
-clear = Button(btns_frame, text="AC", fg="black", width=48, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: bt_clear()).grid(row=1, column=2, columnspan=2, padx=1, pady=1)
+clear = Button(btns_frame, text="AC", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: bt_clear()).grid(row=1, column=2, padx=1, pady=1)
+delete = Button(btns_frame, text="⌫", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: bt_delete()).grid(row=1, column=3, padx=1, pady=1)
 
 # second row
 aSin = Button(btns_frame, text="sin-1", fg="black", width=15, height=3, bd=0, bg="#eee", cursor="hand2", command=lambda: btn_asin("sin-1")).grid(row=2, column=0, padx=1, pady=1)
